@@ -1,0 +1,50 @@
+   36  docker network create -d bridge mon_reseau
+   37  docker network connect mon_reseau B3_jour
+   38  docker network connect mon_reseau B3_soir
+   39  docker rm -f B3_jour B3_soir
+   40  docker volume create mon_volume_temporaire
+   41  docker run -itd --name B3_jour --network mon_reseau -v mon_volume_temporaire:/tmp ubuntu
+   42  docker run -itd --name B3_soir --network mon_reseau -v mon_volume_temporaire:/tmp ubuntu
+   43  docker exec B3_jour bash -c "echo 'Bonjour depuis le volume temporaire' > /tmp/fichier.txt"
+   44  docker exec B3_soir cat /tmp/fichier.txt
+   45  mkdir "CC 1"
+   46  cd "CC 1"
+   47  touch Dockerfile app.py requirements.txt
+   48  docker build -t wilfried-adjaba-flask-app .
+   49  code .
+   50  docker build -t wilfried-adjaba-flask-app .
+   51  docker build -t wilfried-adjaba-flask-app
+   52  docker build -t wilfried-adjaba-flask-app .
+   53  docker run -d -p 5000:5000 --name container-wilfried wilfried-adjaba-flask-app
+   54  docker ps
+   55  docker tag wilfried-adjaba-flask-app billions4/wilfried-adjaba-flask-app:latest
+   56  docker push billions4/wilfried-adjaba-flask-app:latest
+   57  docker info | grep Username
+   58  docker login
+   59  docker tag wilfried-adjaba-flask-app adjaba/wilfried-adjaba-flask-app:latest
+   60  docker push adjaba/wilfried-adjaba-flask-app:latest
+   61  # Initialiser le dossier comme un dépôt Git
+   62  git init
+   63  # Ajouter tous tes fichiers (app.py, Dockerfile, requirements.txt, etc.)
+   64  git add .
+   65  # Créer ton premier message de validation
+   66  git commit -m "Rendu final TP Docker - Wilfried Adjaba"
+   67  # Renommer la branche principale en 'main'
+   68  git branch -M main
+   69  # Lier ton dossier local à ton GitHub (Remplace le nom du repos à la fin)
+   70  git remote add origin https://github.com/BILLIONS4/NOM_DE_TON_REPOS.git
+   71  # Envoyer le tout sur GitHub
+   72  git push -u origin main
+   73  git branch -M main
+   74  git remote remove origin
+   75  git remote add origin https://github.com/BILLIONS4/ton-depot-ici.git
+   76  git push -u origin main
+   77  git remote remove origin
+   78  git remote add origin https://github.com/BILLIONS4/TP_DOCKER.git
+   79  git push -u origin main
+   80  # 1. On nettoie l'ancienne configuration qui pointait au mauvais endroit
+   81  git remote remove origin
+   82  # 2. On ajoute le bon lien vers ton dépôt "tp-docker-flask-wilfried"
+   83  git remote add origin https://github.com/BILLIONS4/tp-docker-flask-wilfried.git
+   84  # 3. On s'assure que le fichier commandes.txt est bien inclus (crucial pour le TP)
+   85  history | tail -n 50 > commandes.txt
