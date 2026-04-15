@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  # Ton application Flask (basée sur ton Dockerfile local)
+  flask-app:
+    build: .
+    container_name: flask-service
+    ports:
+      - "5000:5000"
+    networks:
+      - tp-network
+
+  # Ton Jenkins qui posait problème tout à l'heure
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins-tp
+    privileged: true
+    user: root
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    dns:
+      - 8.8.8.8
+    networks:
+      - tp-network
+
+networks:
+  tp-network:
+    driver: bridge
+
+volumes:
+  jenkins_home:
