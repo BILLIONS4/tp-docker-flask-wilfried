@@ -1,3 +1,38 @@
+    1  sudo apt install git
+    2  docker run -d -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
+    3  docker ps
+    4  docker logs 20ef
+    5  git clone https://github.com/Legeni07/devops_keyce.git
+    6  cd devops_keyce
+    7  ls -la
+    8  cd "TP docker"
+    9  sudo sh docker_install.sh
+   10  mkdir webapp
+   11  cd webapp
+   12  nano Dockerfile
+   13  git clon https://github.com/Legeni07/legeni_webapp.git
+   14  git clone https://github.com/Legeni07/legeni_webapp.git
+   15  nano Dokerfil
+   16  nano Dockerfil
+   17  docker build -t webapp:v1 .
+   18  mv Dockerfil Dockerfile
+   19  docker build -t webapp:v1 .
+   20  sudo dockerimage
+   21  docker images
+   22  docker run -d --name ma-webapp-keyce -p 8081:80 webapp:v1
+   23  git clone git@github.com:BILLIONS4/selivrershop-global-gateway.git
+   24  cd selivrershop-global-gateway
+   25  git clone https://github.com/BILLIONS4/selivrershop-global-gateway.git
+   26  cd selivrershop-global-gateway
+   27  ls -la
+   28  nano Dockerfile
+   29  docker build -t gateway-shop:v1 .
+   30  nano Dockerfile
+   31  docker build -t gateway-shop:v1 .
+   32  git clone https://github.com/Legeni07/devops_keyce.git
+   33  docker run -itd --name B3_jour ubuntu
+   34  docker run -itd --name B3_soir ubuntu
+   35  docker ps
    36  docker network create -d bridge mon_reseau
    37  docker network connect mon_reseau B3_jour
    38  docker network connect mon_reseau B3_soir
@@ -48,3 +83,8 @@
    83  git remote add origin https://github.com/BILLIONS4/tp-docker-flask-wilfried.git
    84  # 3. On s'assure que le fichier commandes.txt est bien inclus (crucial pour le TP)
    85  history | tail -n 50 > commandes.txt
+   86  git add .
+   87  git commit -m "Finalisation du TP : Code + Dockerfile + Historique"
+   88  # 4. On envoie tout sur la branche main
+   89  git push -u origin main
+   90  history > commandes.txt
